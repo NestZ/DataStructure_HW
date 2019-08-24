@@ -1,0 +1,11 @@
+{
+      "configurations": [
+            {
+                  "type": "java",
+                  "name": "CodeLens (Launch) - Main",
+                  "request": "launch",
+                  "mainClass": "hw3.Main",
+                  "projectName": "Homework_d7c9b38f"
+            }
+      ]
+}
