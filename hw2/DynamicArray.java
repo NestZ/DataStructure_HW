@@ -16,7 +16,7 @@ public class DynamicArray {
     
     public void pushBack(int data){
         // FIXED THIS
-        if(size == capacity){
+        if(size == capacity){//Expand Space of Array
             capacity *= 2;
             int [] newArr = new int[capacity];
             for(int i = 0;i < size;i++){
