@@ -15,59 +15,51 @@ public class DynamicArray {
     }
     
     public void pushBack(int data){
-        // FIXED THIS
         if(size == capacity){//Expand Space of Array
             capacity *= 2;
-            int [] newArr = new int[capacity];
-            for(int i = 0;i < size;i++){
+            int [] newArr = new int[capacity];//Create temp array
+            for(int i = 0;i < size;i++){//Copy elements to new array
                 newArr[i] = arr[i];
             }
-            arr = newArr;
+            arr = newArr;//Change reference to new array
         }
-        arr[size] = data;
-        size++;
+        arr[size] = data;//Set data
+        size++;//Increase size's value
     }
     public int popBack(){
-        // FIXED THIS
-        if(size > 0)return arr[--size];
-        else System.out.println("ERROR");
+        if(size > 0)return arr[--size];//Check if size in range and return last element and decrease size's value
+        else System.out.println("ERROR");//Error
         return 0;
     }
 
     public int get(int i){
-        // FIXED THIS
-        if(i < size && i >= 0)return arr[i];
-        else System.out.println("ERROR");
+        if(i < size && i >= 0)return arr[i];//Return element at index i
+        else System.out.println("ERROR");//Error
         return 0;
     }
     public void set(int i, int value){
-        // FIXED THIS
-        if(i < size && i >= 0)arr[i] = value;
+        if(i < size && i >= 0)arr[i] = value;//Set element at index i
         else System.out.println("ERROR");
     }
     
     public void remove(int i){
-        // FIXED THIS
         if(i < size && i >= 0){
-            for(int j = i;j < size - 1;j++)arr[j] = arr[j + 1];
+            for(int j = i;j < size - 1;j++)arr[j] = arr[j + 1];//Delete element at index i and shift elements in array
             size--;
         }
         else System.out.println("ERROR");
     }
     
     public boolean isEmpty(){
-        // FIXED THIS
-        if(size == 0)return true;
+        if(size == 0)return true;//Check array's size
         return false;
     }
     
     public int getSize(){
-        // FIXED THIS
-        return size;
+        return size;//return array's size
     }
     
-    public void printStructure(){
-        // FIXED THIS
+    public void printStructure(){//Just print :)
         System.out.print("Size = " + size + ", Cap = " + capacity + ", arr = [ ");
         for(int i = 0;i < size;i++){
             if(i != 0)System.out.print(", ");
