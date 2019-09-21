@@ -4,6 +4,27 @@
                   "type": "java",
                   "name": "CodeLens (Launch) - Main",
                   "request": "launch",
+                  "mainClass": "hw5.Main",
+                  "projectName": "Homework_34e24ac5"
+            },
+            {
+                  "type": "java",
+                  "name": "CodeLens (Launch) - Main",
+                  "request": "launch",
+                  "mainClass": "oop.Main",
+                  "projectName": "Homework_34e24ac5"
+            },
+            {
+                  "type": "java",
+                  "name": "CodeLens (Launch) - User",
+                  "request": "launch",
+                  "mainClass": "oop.User",
+                  "projectName": "Homework_34e24ac5"
+            },
+            {
+                  "type": "java",
+                  "name": "CodeLens (Launch) - Main",
+                  "request": "launch",
                   "mainClass": "hw4.Main",
                   "projectName": "Homework_34e24ac5"
             },
