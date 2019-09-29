@@ -6,14 +6,14 @@ package hw5;
 
 public class Main {
 
-    public static Node constructTree1(){
+    public static Node constructTree1(){ //Build tree
         Node sTree1 = new Node(1);
         Node sTree8 = new Node(8);
         Node sTree4 = new Node(4);
 
         Node sTree6 = new Node(6);
-        sTree6.left = sTree1;
-        sTree6.right = sTree8;
+        sTree6.left = sTree1;//Set left Node
+        sTree6.right = sTree8;//Set right Node
 
         Node sTree9 = new Node(9);
         sTree9.left = sTree4;
@@ -31,7 +31,7 @@ public class Main {
         root.left = sTree7;
         root.right = sTree5;
 
-        return root;
+        return root;//Return root node
     }
 
     public static Node constructTree2(){
@@ -62,7 +62,7 @@ public class Main {
         root.left = sTree2;
         root.right = sTree3;
 
-        return root;
+        return root;//Return root Node
     }
     public static void main(String[] args) {
         /*Node tree = constructTree1();

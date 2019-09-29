@@ -5,7 +5,7 @@
 package hw5;
 
 public class Stack {
-    Node[] arr;
+    Node[] arr;//Array of Node in Stack
     int capacity;
     int size;
 
@@ -21,7 +21,7 @@ public class Stack {
     public Node pop(){
         if(!isEmpty())return arr[--size];//Return top Node
         else{
-            System.out.println("Stack Underflow!!!");
+            System.out.println("Stack Underflow!!!");//Stack is Empty
             return null;
         }
     }

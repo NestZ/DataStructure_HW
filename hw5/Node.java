@@ -4,17 +4,17 @@
 */ 
 package hw5;
 
-public class Node extends BTreePrinter{
-    Node left;
-    Node right;
-    int data;
+public class Node extends BTreePrinter{//Class Inheritance
+    Node left;//Left child Node
+    Node right;//Right child Node
+    int data;//Key or data
 
     public Node(int data){
         this.data = data;//Initialize data
     }
 
     public void printTree(){
-        super.printTree(this);
+        super.printTree(this);//Call funtion of super class
     }
 
     public void printBFT(){

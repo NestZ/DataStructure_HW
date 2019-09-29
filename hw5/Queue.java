@@ -5,7 +5,7 @@
 package hw5;
 
 public class Queue {
-    Node[] arr;
+    Node[] arr;//Array of Node in Queue
     int capacity;
     int front;
     int back;
@@ -28,14 +28,14 @@ public class Queue {
     public Node dequeue(){
         if (!isEmpty()){
             this.size--;//Decease Array's Size
-            if(this.front == this.capacity - 1){
+            if(this.front == this.capacity - 1){//Check if there is only one Node
                 this.front = 0;//Keep front Variable in range
-                return this.arr[capacity - 1];
+                return this.arr[capacity - 1];//Return last Node
             }
             else return this.arr[front++];
         }
         else{
-            System.out.println("Queue Underflow!!!");
+            System.out.println("Queue Underflow!!!");//Queue is Empty
             return null;
         }
     }
