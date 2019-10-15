@@ -172,9 +172,15 @@ public class Tree extends BTreePrinter{
     public void delete(int key) {
         if(root == null)System.out.println("Empty Tree!!!");//Check null root
         else if(root.key == key){//If root is key then delete root
-            int temp = Tree.findMin(root.right).key;//Store min node of right subtree's key
-            Tree.delete(Tree.findMin(root.right));//Delete min node of right subtree
-            root.key = temp;//Assign root's key
+            if(root.left != null && root.right != null){//If root node is full
+                int temp = Tree.findMin(root.right).key;//Store min node of right subtree's key
+                Tree.delete(Tree.findMin(root.right));//Delete min node of right subtree
+                root.key = temp;//Assign root's key
+            }
+            else{//If root node isn't full
+                if(root.left != null)root = root.left;//Promote left child
+                else if(root.right != null)root = root.right;//Promote right child
+            }
         }
         else{ 
             Node curr = this.find(key);//Else find key to delete
