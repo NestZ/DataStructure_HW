@@ -38,15 +38,13 @@ public class Node{
     }
     
     public static Node leftDescendant(Node node){
-        Node curr = node;//Declare current node
-        while(curr.left != null)curr = curr.left;//Loop until left descendant is null
-        return curr;//Return leftmost descendant
+        if(node.left != null)return Node.leftDescendant(node.left);//Check if left child is null
+        return node;//Else return this node
     }
     
     public static Node rightAncestor(Node node){
-        Node curr = node;//Declare current node
-        while(curr.parent.left != curr)curr = curr.parent;//Loop until current node is on the left of it's parent
-        return curr.parent;//Return the first right ancestor
+        if(node.parent.key < node.key)return Node.rightAncestor(node.parent);//Check if this node is on the left side of its parent
+        return node.parent;//Else return parent node
     }
     
     public int depth(Tree tree){
