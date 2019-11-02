@@ -94,19 +94,63 @@ public class BSTree extends BTreePrinter {
     
     
     public void singleRotateFromLeft(Node y) {
-        // Do something
+        if(y.left != null){//Check if left child is null
+            if(y.parent != null)y.left.parent = y.parent;//Check if this node has parent node
+            else{//Else set new root
+                this.root = y.left;
+                y.left.parent = null;
+            }
+            y.parent = y.left;
+            if(y.left.right != null){//Check if left child has right child
+                y.left = y.left.right;//Swap child
+                y.parent.right = null;
+                y.left.parent = y;
+            }
+            else y.left = null;//Else left child is null
+            y.parent.right = y;
+            if(y.parent.parent != null){//Check if y has parent
+                if(y.parent.key < y.parent.parent.key)y.parent.parent.left = y.parent;//Set parent
+                else y.parent.parent.right = y.parent;
+            }
+            else y.parent.parent = null;//Else set parent to null
+        }
     }
 
     public void singleRotateFromRight(Node y) {
-        // Do something
+        if(y.right != null){//Check if right child is null
+            if(y.parent != null)y.right.parent = y.parent;//Check if this node has parent node
+            else{//Else set new root
+                this.root = y.right;
+                y.right.parent = null;
+            }
+            y.parent = y.right;
+            if(y.right.left != null){//Check if right child has left child
+                y.right = y.right.left;//Swap child
+                y.parent.left = null;
+                y.right.parent = y;
+            }
+            else y.right = null;//Else right child is null
+            y.parent.left = y;
+            if(y.parent.parent != null){//Check if y has parent
+                if(y.parent.key < y.parent.parent.key)y.parent.parent.left = y.parent;//Set parent
+                else y.parent.parent.right = y.parent;
+            }
+            else y.parent.parent = null;//Else set parent to null
+        }
     }
 
     public void doubleRotateFromLeft(Node y) {
-        // Do something
+        if(y.left.right != null){//Check if right child of left child is null
+            this.singleRotateFromRight(y.left);//Rotate left child
+            this.singleRotateFromLeft(y);//Rotate y
+        }
     }
 
     public void doubleRotateFromRight(Node y) {
-        // Do something
+        if(y.right.left != null){//Check if left child of right child is null
+            this.singleRotateFromLeft(y.right);//Rotate right child
+            this.singleRotateFromRight(y);//Rotate y
+        }
     }
 
     // You should have "root node deletion" in this function
@@ -198,13 +242,19 @@ public class BSTree extends BTreePrinter {
 
     
     public static boolean isMergeable(Node r1, Node r2){
-        return false;// Fix this
+        if(r1 != null && r2 != null){//Check if node if null
+            if(BSTree.findMax(r1).key < BSTree.findMin(r2).key)return true;//Check if left sub-tree is less than right sub-tree
+        }
+        return false;//Else return false
     }
     
     public static Node mergeWithRoot(Node r1, Node r2, Node t){
         if (isMergeable(r1, r2)) {
-            // Fix this
-            return null;
+            t.left = r1;//Set left child
+            t.right = r2;//Set right child
+            r1.parent = t;//Set r1 parent
+            r2.parent = t;//Set r2 parent
+            return t;//Return new root
         } else {
             System.out.println("All nodes in T1 must be smaller than all nodes from T2");
             return null;
@@ -212,8 +262,10 @@ public class BSTree extends BTreePrinter {
     }
           
     public void merge(BSTree tree2){
-        if (isMergeable(this.root, tree2.root)){
-            // Do something
+        if (isMergeable(this.root, tree2.root)){//Check if trees is mergable
+            Node temp = this.findMax();//Declare temp node
+            this.delete(temp.key);//Delete max node of right sub-tree
+            this.root = BSTree.mergeWithRoot(this.root, tree2.root, temp);//Merge trees with root
         }else{
             System.out.println("All nodes in T1 must be smaller than all nodes from T2");
         }
@@ -221,18 +273,21 @@ public class BSTree extends BTreePrinter {
     }
     
     public NodeList split(int key){
-        return new NodeList(); // This is incorrect, fix this by calling static split
+        return BSTree.split(this.root, key);//Return Node list from static method
     }
+
     public static NodeList split(Node r, int key){
         NodeList list = new NodeList();
         if (r == null){
             return list;
         }else if (key < r.key){
-            // Do something
-            return list;
-        }else{ // key>=root.key
-            // Do something
-            return list;
+            list = BSTree.split(r.left, key);//Recursivly split tree
+            list.r2 = BSTree.mergeWithRoot(list.r2, r.right, r);//Merge sub-tree
+            return list;//Return list of tree
+        }else{
+            list = BSTree.split(r.right, key);//Recursivly split tree
+            list.r1 = BSTree.mergeWithRoot(r.left, list.r1, r);//Merge sub-tree
+            return list;//Return list of tree
         }
     }
 }

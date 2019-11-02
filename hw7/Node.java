@@ -24,6 +24,7 @@ public class Node{
     }
 
     public boolean isImbalance(){
-        return false; // fix this
+        if(Math.abs(Node.height(this.left) - Node.height(this.right)) > 1)return true;//Check if this node is imbalance
+        return false;//Else return false
     }
 }
