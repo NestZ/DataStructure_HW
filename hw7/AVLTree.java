@@ -95,7 +95,7 @@ public class AVLTree extends BTreePrinter {
                 insert(tree, node.right, key);
             }
         }
-        rebalance(tree, node);//Rebalance tree
+        AVLTree.rebalance(tree, node);//Rebalance tree
     }
     
     // Fix this
@@ -305,14 +305,12 @@ public class AVLTree extends BTreePrinter {
                 Node temp = AVLTree.mergeWithRoot(r1.right, r2, t);//Recursive on right side
                 r1.right = temp;
                 temp.parent = r1;
-                rebalance(new AVLTree(r1), r1);//Rebalance tree
                 return r1;//Return root node
             }
             else{//If right is higher
                 Node temp = AVLTree.mergeWithRoot(r1, r2.left, t);//Recursive in left side
                 r2.left = temp;
                 temp.parent = r2;
-                rebalance(new AVLTree(r2), r2);//Rebalance tree
                 return r2;//Return root node
             }
         }else{
@@ -324,17 +322,18 @@ public class AVLTree extends BTreePrinter {
     public void merge(AVLTree tree2){
         if (isMergeable(this.root, tree2.root)){
             Node temp = this.findMax();//Declare temp node
-            this.delete(temp.key);//Delete max node of right sub-tree
+            this.delete(temp.key);//Delete min node of right sub-tree
             this.root = AVLTree.mergeWithRoot(this.root, tree2.root, temp);//Merge trees with root
+            AVLTree.rebalance(this, this.root);//Rebalance tree
         }else{
             System.out.println("All nodes in T1 must be smaller than all nodes from T2");
         }
-        
     }
     
     public NodeList split(int key){
-        return new NodeList();// This is incorrect, fix this by calling the static split
+        return AVLTree.split(this.root, key);//Split tree by calling static method
     }
+
     public static NodeList split(Node r, int key){
         NodeList list = new NodeList();
         return list; // Fix this

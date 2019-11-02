@@ -117,7 +117,9 @@ public class Main {
         tree1.merge(tree2);
         tree1.printTree();*/
 
-        AVLTree tree1 = new AVLTree();
+
+
+        /*AVLTree tree1 = new AVLTree();
         int[] keyList = {4, 2, 6, 1, 3, 5, 8, 7, 9};
         for (int i=0; i<keyList.length; i++)
             tree1.insert(keyList[i]);
@@ -134,6 +136,90 @@ public class Main {
         tree2.printTree();
         System.out.println("Try to merge tree2 to (the right of) tree1...");
         tree1.merge(tree2);
-        tree1.printTree(); 
+        tree1.printTree();*/
+
+
+
+        /*SplayTree tree1 = new SplayTree();
+        int[] keyList = {1, 2, 3, 4};
+        for (int i = 0; i < keyList.length; i++){
+            tree1.insert(keyList[i]);
+        }
+        tree1.printTree();
+        System.out.println("Zig Node (1)");
+        tree1.zig(tree1.findWithoutSplaying(1));
+        tree1.printTree();
+        System.out.println("Zig Node (3)");
+        tree1.zig(tree1.findWithoutSplaying(3));
+        tree1.printTree();
+        System.out.println("Zig Node (2)");
+        tree1.zig(tree1.findWithoutSplaying(2));
+        tree1.printTree();
+        System.out.println("Zig Node (4)");
+        tree1.zig(tree1.findWithoutSplaying(4));
+        tree1.printTree();*/
+
+        /*SplayTree tree1 = new SplayTree();
+        int[] keyList = {5, 7, 2, 3, 1, 6, 8};
+        for (int i = 0; i < keyList.length; i++)
+            tree1.insert(keyList[i]);
+        tree1.printTree();
+        System.out.println("ZigZig Node (1)");
+        tree1.zigzig(tree1.findWithoutSplaying(1));
+        tree1.printTree();
+        System.out.println("ZigZag Node (5)");
+        tree1.zigzag(tree1.findWithoutSplaying(5));
+        tree1.printTree();
+        System.out.println("ZigZag Node (5)");
+        tree1.zigzag(tree1.findWithoutSplaying(5));
+        tree1.printTree();
+        System.out.println("ZigZag Node (7)");
+        tree1.zigzag(tree1.findWithoutSplaying(7));
+        tree1.printTree();
+        System.out.println("ZigZag Node (2)");
+        tree1.zigzag(tree1.findWithoutSplaying(2));
+        tree1.printTree();
+        System.out.println("ZigZag Node (3)");
+        tree1.zigzag(tree1.findWithoutSplaying(3));
+        tree1.printTree();
+        System.out.println("ZigZig Node (7)");
+        tree1.zigzig(tree1.findWithoutSplaying(7));
+        tree1.printTree();*/
+
+        /*SplayTree tree1 = new SplayTree();
+        for (int i=10; i>=1; i--)
+            tree1.insert(i);
+        System.out.println("Initial tree height = " + Node.height(tree1.root));
+        tree1.find(1);
+        tree1.find(3);
+        tree1.find(9);
+        tree1.find(5);
+        tree1.find(7);
+        tree1.find(2);
+        tree1.printTree();
+        System.out.println("Tree height after multiple accesses = " + Node.height(tree1.root));
+        tree1.delete(3);
+        tree1.printTree();
+        System.out.println("Tree height after one deletion = " + Node.height(tree1.root));*/
+
+        /*BSTree tree1 = new BSTree();
+        long start = System.currentTimeMillis();
+        int N = 13000;
+        for (int i = 0; i < N; i++)
+            tree1.insert(i);
+        System.out.println("Time for sequentially inserting " + N + " objects into BST = " + (System.currentTimeMillis() - start) + " msec");
+        start = System.currentTimeMillis();
+        for (int i = 0; i < N; i++)
+            tree1.find((int) (Math.random() * (N / 10)));
+        System.out.println("Time for finding " + (N/10) + " different objects in BST= " + (System.currentTimeMillis() - start) + " msec");
+        SplayTree tree2 = new SplayTree();
+        start = System.currentTimeMillis();
+        for (int i = 0; i < N; i++)
+        tree2.insert(i);
+        System.out.println("Time for sequentially inserting " + N + " objects into SplayTree = " + (System.currentTimeMillis() - start) + " msec");
+        start = System.currentTimeMillis();
+        for (int i = 0; i < N; i++)
+        tree2.find((int) (Math.random() * (N / 10)));
+        System.out.println("Time for finding " + (N/10) + " different objects in SplayTree = " + (System.currentTimeMillis() - start) + " msec");*/
     }
 }
