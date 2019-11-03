@@ -289,10 +289,8 @@ public class AVLTree extends BTreePrinter {
     }
 
     public static boolean isMergeable(Node r1, Node r2){
-        if(r1 != null && r2 != null){//Check if node if null
-            if(AVLTree.findMax(r1).key < AVLTree.findMin(r2).key)return true;//Check if left sub-tree is less than right sub-tree
-        }
-        return false;//Else return false
+        if(r1 == null || r2 == null)return true;
+        return AVLTree.findMax(r1).key < AVLTree.findMin(r2).key; //Check if left sub-tree is less than right sub-tree
     }
     
     public static Node mergeWithRoot(Node r1, Node r2, Node t){
@@ -336,6 +334,16 @@ public class AVLTree extends BTreePrinter {
 
     public static NodeList split(Node r, int key){
         NodeList list = new NodeList();
-        return list; // Fix this
+        if (r == null){
+            return list;
+        }else if (r.key > key){
+            list = AVLTree.split(r.left, key);//Recursivly split tree
+            list.r2 = AVLTree.mergeWithRoot(list.r2, r.right, r);//Merge sub-tree
+            return list;//Return list of tree
+        }else{
+            list = AVLTree.split(r.right, key);//Recursivly split tree
+            list.r1 = AVLTree.mergeWithRoot(r.left, list.r1, r);//Merge sub-tree
+            return list;//Return list of tree
+        }
     }
 }

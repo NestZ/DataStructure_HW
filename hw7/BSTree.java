@@ -242,18 +242,17 @@ public class BSTree extends BTreePrinter {
 
     
     public static boolean isMergeable(Node r1, Node r2){
-        if(r1 != null && r2 != null){//Check if node if null
-            if(BSTree.findMax(r1).key < BSTree.findMin(r2).key)return true;//Check if left sub-tree is less than right sub-tree
-        }
-        return false;//Else return false
+        if(r1 == null || r2 == null)return true;
+        return BSTree.findMax(r1).key < BSTree.findMin(r2).key; //Check if left sub-tree is less than right sub-tree
     }
     
     public static Node mergeWithRoot(Node r1, Node r2, Node t){
         if (isMergeable(r1, r2)) {
+            if(t == null)return null;//Check if t is null
             t.left = r1;//Set left child
             t.right = r2;//Set right child
-            r1.parent = t;//Set r1 parent
-            r2.parent = t;//Set r2 parent
+            if(r1 != null)r1.parent = t;//Set r1 parent
+            if(r2 != null)r2.parent = t;//Set r2 parent
             return t;//Return new root
         } else {
             System.out.println("All nodes in T1 must be smaller than all nodes from T2");
@@ -280,7 +279,7 @@ public class BSTree extends BTreePrinter {
         NodeList list = new NodeList();
         if (r == null){
             return list;
-        }else if (key < r.key){
+        }else if (r.key > key){
             list = BSTree.split(r.left, key);//Recursivly split tree
             list.r2 = BSTree.mergeWithRoot(list.r2, r.right, r);//Merge sub-tree
             return list;//Return list of tree
