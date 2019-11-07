@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         StockMarket market = new StockMarket(10, 10); // 10 investos, 10 stocks
                 // Add 10 investors and the initial balance
-        market.addInvestor("Thaneat", 10000); // ID=0
+        /*market.addInvestor("Thaneat", 10000); // ID=0
         market.addInvestor("Ronnachai", 10000); // ID=1
         market.addInvestor("Peerawich", 10000); // ID=2
         market.addInvestor("Apichart", 9000); // ID=3
@@ -125,13 +125,13 @@ public class Main {
         
         market.quote("PTT");
         
-        market.portfolio("Ronnachai");
+        market.portfolio("Ronnachai");*/
         
         
         
         // Optinal test cases
         
-        Node nodeA = new Node();
+        /*Node nodeA = new Node();
         Node nodeB = new Node();
         
         nodeA.price = 30; nodeA.timestamp = 1; nodeA.isMinHeap = true;
@@ -147,7 +147,7 @@ public class Main {
         nodeA.price = 100; nodeA.timestamp = 1; nodeA.isMinHeap = true;
         nodeB.price = 100; nodeB.timestamp = 2; nodeB.isMinHeap = true;
         System.out.println("nodeA.compare(nodeB) = " + nodeA.compare(nodeB));
-        System.out.println("nodeB.compare(nodeA) = " + nodeB.compare(nodeA));
+        System.out.println("nodeB.compare(nodeA) = " + nodeB.compare(nodeA));*/
     }
     
 }
