@@ -30,12 +30,14 @@ public class Node {
     // You may create your own function if you do not understand my code
     public boolean compare(Node rightNode){
         if (this.price == rightNode.price) {
-            return false; // FIX THIS
+            return this.timestamp < rightNode.timestamp;//True if lower time stamp
         }else{
             if (isMinHeap){
-                return false; // FIX THIS
+                if(this.price < rightNode.price)return true;//True if price is lower
+                else return false; //Else return false
             }else{
-                return false; // FIX THIS
+                if(this.price > rightNode.price)return true;//True if price is higher
+                else return false; //Else return false
             }
         }
     }

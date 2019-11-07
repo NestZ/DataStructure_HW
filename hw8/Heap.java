@@ -14,39 +14,77 @@ public class Heap {
     int timeCounter;
     
     public Heap(boolean isMinHeap, int size){
-        arr = new Node[size+1];
-        heapSize = size;
-        back = 1;
+        this.arr = new Node[size+1];
+        this.heapSize = size;
+        this.back = 1;
         this.isMinHeap = isMinHeap;
-        timeCounter = 0;
+        this.timeCounter = 0;
     }
     public Node top(){
-        return null; // FIX THIS
+        return this.arr[1];//Return top of heap
     }
     
     public void push(Node node){
         // Increase timestamp each time you push something
-        timeCounter++;
-        node.timestamp = timeCounter; // Stamp the time number to the node
+        this.timeCounter++;
+        node.timestamp = this.timeCounter; // Stamp the time number to the node
         
-        // Do something
         // Push new node at the end of the array then sift (percolate) up
-        
-        
-        // Right shift the back pointer
-        // back++; // Uncommment this line and put it to the appropriate location
+        this.arr[back] = node;//Push new node
+        if(back > 1){//If there are more than one node in this heap
+            int b = this.back;//Declare temp variable
+            while(b > 1){//Loop if priority isn't satisfy
+                if(this.arr[b].compare(this.arr[b / 2])){//If parent is not at satisfy index
+                    swap(b, b / 2);//Swap with parent node
+                    b = b / 2;//Update value
+                }
+                else break;
+            }
+        }
+        this.back++;//Right shift the back pointer
     }
     public Node pop(){
         // DO SOMETHING
         // 1. mark the root for return
         // 2. Replace the last node with the root
         // 3. Sift (percolate) down
-        
-        // Left shift the back pointer
-        // back--; // Uncommment this line and put it to the appropriate location
-        
-        return arr[1]; // You may have to fix this line
-
+        Node root = this.arr[1];//Declare temp Node to mark root for return
+        this.arr[1] = this.arr[back - 1];//Swap last node and root
+        this.arr[back - 1] = null;//Delete last node
+        if(this.back > 1){//If there are more than one node in this heap
+            int n = 1;//Set current index
+            while((n * 2 < this.back - 1) || (n * 2 + 1 < this.back - 1)){//Loop if priority isn't satisfy
+                if((n * 2 < this.back - 1) && (n * 2 + 1 < this.back - 1)){//If left and right child isn't null
+                    if(this.arr[n * 2].compare(this.arr[n * 2 + 1])){
+                        if(!this.arr[n].compare(this.arr[n * 2])){//If left node is not at satisfy index
+                            swap(n, n * 2);//Swap with child node
+                            n = n * 2;//Update value
+                        }
+                    }
+                    else if(!this.arr[n].compare(this.arr[n * 2 + 1])){//Else if right node is not at satisfy index
+                        swap(n, n * 2 + 1);//Swap with child node
+                        n = n * 2 + 1;//Update value
+                    }
+                    else break;
+                }
+                else if(n * 2 < this.back - 1){//If left child isn't null
+                    if(!this.arr[n].compare(this.arr[n * 2])){//If left node is not at satisfy index
+                        swap(n, n * 2);//Swap with child node
+                        n = n * 2;//Update value
+                    }
+                    else break;
+                }
+                else if(n * 2 + 1 < this.back - 1){//If right child isn't null
+                    if(!this.arr[n].compare(this.arr[n * 2 + 1])){//Else if right node is not at satisfy index
+                        swap(n, n * 2 + 1);//Swap with child node
+                        n = n * 2 + 1;//Update value
+                    }
+                    else break;
+                }
+            }
+        }
+        this.back--;//Left shift the back pointer
+        return root;//Pop root
     }
 
     // Optional: If you do not know what this function does, you do not have to use it
@@ -59,9 +97,9 @@ public class Heap {
     // Optional: If you do not know what this function does, you do not have to use it
     public void printArray(){
         System.out.print("[");
-        for (int i=1; i<back; i++){
+        for (int i = 1;i < back;i++){
             System.out.print(arr[i].price);
-            if (i<back-1)
+            if (i < back - 1)
                 System.out.print(", ");
         }
         System.out.println("]");

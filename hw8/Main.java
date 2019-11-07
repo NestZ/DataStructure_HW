@@ -38,9 +38,8 @@ public class Main {
         market.portfolio("Ronnachai");
         market.portfolio("Thaneat");
         
-        
         // To uncomment below, you need to implement Heap
-        /*
+        
         
         market.submitSellOrder("Peerawich", "SCB", 5, 200);
         market.submitSellOrder("Goravit", "SCB", 10, 180);
@@ -127,9 +126,9 @@ public class Main {
         market.quote("PTT");
         
         market.portfolio("Ronnachai");
-        */
         
-        /*
+        
+        
         // Optinal test cases
         
         Node nodeA = new Node();
@@ -149,7 +148,6 @@ public class Main {
         nodeB.price = 100; nodeB.timestamp = 2; nodeB.isMinHeap = true;
         System.out.println("nodeA.compare(nodeB) = " + nodeA.compare(nodeB));
         System.out.println("nodeB.compare(nodeA) = " + nodeB.compare(nodeA));
-*/
     }
     
 }
