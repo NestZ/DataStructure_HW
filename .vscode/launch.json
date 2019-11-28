@@ -4,6 +4,13 @@
                   "type": "java",
                   "name": "CodeLens (Launch) - Main",
                   "request": "launch",
+                  "mainClass": "hw9.Main",
+                  "projectName": "Homework_34e24ac5"
+            },
+            {
+                  "type": "java",
+                  "name": "CodeLens (Launch) - Main",
+                  "request": "launch",
                   "mainClass": "hw8.Main",
                   "projectName": "Homework_34e24ac5"
             },
